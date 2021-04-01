@@ -6,16 +6,19 @@ import {
   Heading,
   Text,
   Button,
-  Image,
+  // Image,
   Icon,
   SimpleGrid,
   HStack,
   VStack,
-  useColorModeValue,
-  useBreakpointValue
+  useColorModeValue
 } from "@chakra-ui/react"
+import { useState } from "react"
 import uuid from "react-uuid"
-import { CheckIcon } from "@chakra-ui/icons"
+import Image from "next/image"
+import { CheckIcon, CloseIcon } from "@chakra-ui/icons"
+import { FaWhatsapp } from "react-icons/fa"
+import { motion } from "framer-motion"
 
 const features = [
   {
@@ -26,54 +29,52 @@ const features = [
   },
   {
     text: "Servicios personalizados para tus clientes."
+  },
+  {
+    text: "Desde AR$5.000 al mes."
   }
 ]
 
 export default function CallToActionWithVideo() {
+  const [check, setCheck] = useState<boolean>(true)
+
+  const AnimationButton = ({ children }) => (
+    <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+      {children}
+    </motion.button>
+  )
   return (
-    <Container maxW={"7xl"}>
+    <Container maxW={"7xl"} px={5}>
       <Stack
         align={"center"}
-        spacing={{ base: 8, md: 10 }}
-        py={{ base: 20, md: 28 }}
-        direction={{ base: "column", md: "row" }}
+        justify={"space-between"}
+        spacing={{ base: 8, md: 20 }}
+        py={{ base: 16, md: 28 }}
+        direction={{ base: "column", lg: "row" }}
       >
-        <Stack flex={1} spacing={{ base: 5, md: 10 }}>
+        <Stack flex={1} spacing={{ base: 6, md: 12 }}>
           <Heading
             lineHeight={1.1}
             fontWeight={600}
             fontSize={{ base: "3xl", sm: "4xl", lg: "5xl" }}
           >
-            <Text
-              as={"span"}
-              position={"relative"}
-              _after={{
-                content: "''",
-                width: "full",
-                height: "15%",
-                position: "absolute",
-                bottom: 1,
-                left: 0,
-                bg: "purple.400",
-                zIndex: -1
-              }}
-            >
-              Todo lo que necesitas,
+            <Text as={"span"} position={"relative"}>
+              Gestione su negocio,
             </Text>
             <br />
             <Text as={"span"} color={"purple.400"}>
-              para atender a tus clientes en un solo lugar
+              incremente sus ventas
             </Text>
           </Heading>
           <Text
             color={useColorModeValue("gray.500", "gray.300")}
             fontSize={{ base: "lg", lg: "xl" }}
           >
-            Cookep es un software de gestión para viandas empresariales que
-            sirve para mejorar la experiencia que le brindas a tus clientes
-            mientras tienes el control total y absoluto de tu negocio.
+            Somos la manera más sencilla de administrar empresas de viandas.
+            Centralización de información, control absoluto de los detalles,
+            atención a cada uno de sus clientes y mucho más con Cookep.
           </Text>
-          <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
+          <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
             {features.map((feature) => (
               <HStack key={uuid()} align={"top"}>
                 <Box color={"green.400"} px={2}>
@@ -96,15 +97,15 @@ export default function CallToActionWithVideo() {
           >
             <Button
               rounded={"full"}
+              leftIcon={<FaWhatsapp />}
               size={"lg"}
               fontWeight={"normal"}
               px={6}
               color={"white"}
-              colorScheme={"purple"}
-              bg={"purple.500"}
-              _hover={{ bg: "purple.600" }}
+              colorScheme={"whatsapp"}
+              _hover={{ bg: "green.600" }}
             >
-              Solicitar una demo
+              Probar gratis
             </Button>
           </Stack>
         </Stack>
@@ -117,21 +118,17 @@ export default function CallToActionWithVideo() {
         >
           <Box
             position={"relative"}
-            height={"400px"}
+            height={{ base: "250px", sm: "350px", md: "450px", lg: "400px" }}
             rounded={"2xl"}
             boxShadow={"2xl"}
             width={"full"}
             overflow={"hidden"}
           >
             <Image
-              alt={"Hero Image"}
-              fit={"cover"}
-              align={"center"}
-              w={"100%"}
-              h={"100%"}
-              src={
-                "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80"
-              }
+              alt={"Cookep Image"}
+              layout="fill"
+              objectFit="cover"
+              src={check ? "/assets/img/with.svg" : "/assets/img/without.svg"}
             />
           </Box>
           <Flex
@@ -141,51 +138,85 @@ export default function CallToActionWithVideo() {
             justify={"center"}
             align={"center"}
           >
-            <Box px={4} py={4}>
-              <Button
-                rounded={"full"}
-                size={"md"}
-                fontWeight={"normal"}
-                px={6}
-                color={"white"}
-                colorScheme={"purple"}
-                bg={"purple.500"}
-                border={"2px solid white"}
-                _hover={{ bg: "purple.600" }}
-              >
-                Catering
-              </Button>
-            </Box>
-            <Box px={4} py={4}>
-              <Button
-                rounded={"full"}
-                size={"md"}
-                fontWeight={"normal"}
-                px={6}
-                color={"white"}
-                colorScheme={"purple"}
-                bg={"purple.500"}
-                border={"2px solid white"}
-                _hover={{ bg: "purple.600" }}
-              >
-                Empresas cliente
-              </Button>
-            </Box>
-            <Box px={4} py={4}>
-              <Button
-                rounded={"full"}
-                size={"md"}
-                fontWeight={"normal"}
-                px={6}
-                color={"white"}
-                colorScheme={"purple"}
-                bg={"purple.500"}
-                border={"2px solid white"}
-                _hover={{ bg: "purple.600" }}
-              >
-                Empleados
-              </Button>
-            </Box>
+            {check ? (
+              <>
+                <Box px={4} py={4}>
+                  <AnimationButton>
+                    <Button
+                      rounded={"full"}
+                      onClick={() => setCheck(true)}
+                      size={"md"}
+                      leftIcon={<CheckIcon />}
+                      fontWeight={"normal"}
+                      px={6}
+                      color={"white"}
+                      colorScheme={"purple"}
+                      bg={"purple.500"}
+                      _hover={{ bg: "purple.600" }}
+                    >
+                      Con Cookep
+                    </Button>
+                  </AnimationButton>
+                </Box>
+                <Box px={4} py={4}>
+                  <AnimationButton>
+                    <Button
+                      rounded={"full"}
+                      onClick={() => setCheck(false)}
+                      size={"md"}
+                      leftIcon={<CloseIcon />}
+                      fontWeight={"normal"}
+                      px={6}
+                      color={"white"}
+                      colorScheme={"gray"}
+                      bg={"gray.500"}
+                      _hover={{ bg: "gray.600" }}
+                    >
+                      Sin Cookep
+                    </Button>
+                  </AnimationButton>
+                </Box>
+              </>
+            ) : (
+              <>
+                <Box px={4} py={4}>
+                  <AnimationButton>
+                    <Button
+                      rounded={"full"}
+                      onClick={() => setCheck(true)}
+                      size={"md"}
+                      leftIcon={<CheckIcon />}
+                      fontWeight={"normal"}
+                      px={6}
+                      color={"white"}
+                      colorScheme={"gray"}
+                      bg={"gray.500"}
+                      _hover={{ bg: "gray.600" }}
+                    >
+                      Con Cookep
+                    </Button>
+                  </AnimationButton>
+                </Box>
+                <Box px={4} py={4}>
+                  <AnimationButton>
+                    <Button
+                      rounded={"full"}
+                      onClick={() => setCheck(false)}
+                      size={"md"}
+                      leftIcon={<CloseIcon />}
+                      fontWeight={"normal"}
+                      px={6}
+                      color={"white"}
+                      colorScheme={"purple"}
+                      bg={"purple.500"}
+                      _hover={{ bg: "purple.600" }}
+                    >
+                      Sin Cookep
+                    </Button>
+                  </AnimationButton>
+                </Box>
+              </>
+            )}
           </Flex>
         </Flex>
       </Stack>

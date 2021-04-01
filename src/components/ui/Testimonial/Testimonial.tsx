@@ -92,8 +92,10 @@ export default function WithSpeechBubbles() {
     <Box bg={useColorModeValue("white", "gray.700")}>
       <Container maxW={"7xl"} py={16} as={Stack} spacing={12}>
         <Stack spacing={0} align={"center"}>
-          <Heading>Nuestros clientes hablan</Heading>
-          <Text>Trabajamos con clientes de todo latinoamérica</Text>
+          <Heading align={"center"}>Nuestros clientes hablan</Heading>
+          <Text align={"center"}>
+            Trabajamos con clientes de todo latinoamérica
+          </Text>
         </Stack>
         <Stack
           direction={{ base: "column", md: "row" }}
