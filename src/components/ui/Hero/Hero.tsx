@@ -61,18 +61,21 @@ export default function CallToActionWithVideo() {
             <Text as={"span"} position={"relative"}>
               Gestione su negocio,
             </Text>
-            <br />
             <Text as={"span"} color={"purple.400"}>
-              incremente sus ventas
+              {" "}
+              mejore la atención a sus clientes
             </Text>
           </Heading>
           <Text
             color={useColorModeValue("gray.500", "gray.300")}
             fontSize={{ base: "lg", lg: "xl" }}
           >
-            Somos la manera más sencilla de administrar empresas de viandas.
+            {/* Somos la manera más sencilla de administrar empresas de viandas.
             Centralización de información, control absoluto de los detalles,
-            atención a cada uno de sus clientes y mucho más con Cookep.
+            atención a cada uno de sus clientes y mucho más con Cookep. */}
+            La mejor herramienta para centralizar información de sus clientes,
+            emitir y recibir órdenes de pedidos, gestionar la producción de la
+            cocina y facilitar los procesos logísticos.
           </Text>
           <SimpleGrid
             columns={{ base: 1, md: 2 }}
@@ -129,17 +132,27 @@ export default function CallToActionWithVideo() {
             width={"full"}
             overflow={"hidden"}
           >
-            <Image
-              fallbackSrc={
-                check ? "/assets/img/with.svg" : "/assets/img/without.svg"
-              }
-              alt={"Cookep Image"}
-              fit={"cover"}
-              align={"center"}
-              w={"100%"}
-              h={"100%"}
-              src={check ? "/assets/img/with.svg" : "/assets/img/without.svg"}
-            />
+            {check ? (
+              <Image
+                fallbackSrc={"/assets/img/with.svg"}
+                alt={"With Cookep"}
+                fit={"cover"}
+                align={"center"}
+                w={"100%"}
+                h={"100%"}
+                src={"/assets/img/with.svg"}
+              />
+            ) : (
+              <Image
+                fallbackSrc={"/assets/img/without.svg"}
+                alt={"Without Cookep"}
+                fit={"cover"}
+                align={"center"}
+                w={"100%"}
+                h={"100%"}
+                src={"/assets/img/without.svg"}
+              />
+            )}
           </Box>
           <Flex
             pt={8}
