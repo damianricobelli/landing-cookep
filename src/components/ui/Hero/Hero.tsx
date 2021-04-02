@@ -6,8 +6,8 @@ import {
   Heading,
   Text,
   Button,
-  // Image,
   Icon,
+  Image,
   SimpleGrid,
   HStack,
   VStack,
@@ -15,7 +15,6 @@ import {
 } from "@chakra-ui/react"
 import { useState } from "react"
 import uuid from "react-uuid"
-import Image from "next/image"
 import { CheckIcon, CloseIcon } from "@chakra-ui/icons"
 import { FaWhatsapp } from "react-icons/fa"
 import { motion } from "framer-motion"
@@ -43,6 +42,7 @@ export default function CallToActionWithVideo() {
       {children}
     </motion.button>
   )
+
   return (
     <Container maxW={"7xl"} px={5}>
       <Stack
@@ -74,7 +74,11 @@ export default function CallToActionWithVideo() {
             Centralización de información, control absoluto de los detalles,
             atención a cada uno de sus clientes y mucho más con Cookep.
           </Text>
-          <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
+          <SimpleGrid
+            columns={{ base: 1, md: 2 }}
+            pt={{ base: 8, md: 0 }}
+            spacing={4}
+          >
             {features.map((feature) => (
               <HStack key={uuid()} align={"top"}>
                 <Box color={"green.400"} px={2}>
@@ -93,6 +97,7 @@ export default function CallToActionWithVideo() {
           </SimpleGrid>
           <Stack
             spacing={{ base: 4, sm: 6 }}
+            py={{ base: 10, md: 0 }}
             direction={{ base: "column", sm: "row" }}
           >
             <Button
@@ -118,16 +123,21 @@ export default function CallToActionWithVideo() {
         >
           <Box
             position={"relative"}
-            height={{ base: "250px", sm: "350px", md: "450px", lg: "400px" }}
+            height={{ base: "220px", sm: "350px", md: "450px", lg: "400px" }}
             rounded={"2xl"}
             boxShadow={"2xl"}
             width={"full"}
             overflow={"hidden"}
           >
             <Image
+              fallbackSrc={
+                check ? "/assets/img/with.svg" : "/assets/img/without.svg"
+              }
               alt={"Cookep Image"}
-              layout="fill"
-              objectFit="cover"
+              fit={"cover"}
+              align={"center"}
+              w={"100%"}
+              h={"100%"}
               src={check ? "/assets/img/with.svg" : "/assets/img/without.svg"}
             />
           </Box>

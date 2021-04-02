@@ -47,7 +47,7 @@ const TestimonialContent = ({ children }: { children: ReactNode }) => {
 
 const TestimonialHeading = ({ children }: { children: ReactNode }) => {
   return (
-    <Heading as={"h3"} fontSize={"xl"}>
+    <Heading as={"h3"} textAlign={"center"} fontSize={"xl"}>
       {children}
     </Heading>
   )
@@ -76,7 +76,14 @@ const TestimonialAvatar = ({
 }) => {
   return (
     <Flex align={"center"} mt={8} direction={"column"}>
-      <Avatar src={src} alt={name} mb={2} />
+      <Avatar
+        bg="white"
+        border={"2px solid gray"}
+        src={src}
+        size={"xl"}
+        alt={name}
+        mb={2}
+      />
       <Stack spacing={-1} align={"center"}>
         <Text fontWeight={600}>{name}</Text>
         <Text fontSize={"sm"} color={useColorModeValue("gray.600", "gray.400")}>
@@ -103,50 +110,52 @@ export default function WithSpeechBubbles() {
         >
           <Testimonial>
             <TestimonialContent>
-              <TestimonialHeading>Colaboración eficiente</TestimonialHeading>
+              <TestimonialHeading>
+                Plataforma amigable e intuitiva
+              </TestimonialHeading>
               <TestimonialText>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor
-                neque sed imperdiet nibh lectus feugiat nunc sem.
+                Cumple un rol importante ya que unifica los pedidos de nuestros
+                clientes, reduce tiempos administrativos y cierra el ciclo
+                operacional. Muchos de nuestros clientes nos pedían una
+                herramienta que sea fácil de usar y llegó en el momento justo.
               </TestimonialText>
             </TestimonialContent>
             <TestimonialAvatar
-              src={
-                "https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
-              }
-              name={"Jane Cooper"}
-              title={"CEO at ABC Corporation"}
+              src={"assets/img/cookmeals.svg"}
+              name={"Javier Sandoval"}
+              title={"CEO de Cook Meals Catering"}
             />
           </Testimonial>
           <Testimonial>
             <TestimonialContent>
-              <TestimonialHeading>Diseño intuitivo</TestimonialHeading>
+              <TestimonialHeading>Información clara</TestimonialHeading>
               <TestimonialText>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor
-                neque sed imperdiet nibh lectus feugiat nunc sem.
+                Lo que más me interesó de Cookep es tener la posiblidad de
+                chequear toda la información relevante sobre el servicio
+                contratado. Nunca más esos malentendidos con los empleados y la
+                empresa de catering.
               </TestimonialText>
             </TestimonialContent>
             <TestimonialAvatar
-              src={
-                "https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
-              }
-              name={"Jane Cooper"}
-              title={"CEO at ABC Corporation"}
+              src={"assets/img/rrhh.png"}
+              name={"RRHH"}
+              title={"Empresa Lackaut"}
             />
           </Testimonial>
           <Testimonial>
             <TestimonialContent>
-              <TestimonialHeading>Servicio alucinante</TestimonialHeading>
+              <TestimonialHeading>Servicio de soporte veloz</TestimonialHeading>
               <TestimonialText>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor
-                neque sed imperdiet nibh lectus feugiat nunc sem.
+                Es un sistema súmamente práctico y fácil de usar. Cada vez que
+                tuvimos que ser asistidos por el soporte, actuaron de manera
+                rápida. Tener la posibilidad de organizar todos los pedidos a
+                través de las planillas nos facilitó muchísimo los procesos.
               </TestimonialText>
             </TestimonialContent>
             <TestimonialAvatar
-              src={
-                "https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
-              }
-              name={"Jane Cooper"}
-              title={"CEO at ABC Corporation"}
+              src={"assets/img/comercial.png"}
+              name={"Comercial"}
+              title={"Merck Group"}
             />
           </Testimonial>
         </Stack>

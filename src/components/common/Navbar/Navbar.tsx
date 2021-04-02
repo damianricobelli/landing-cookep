@@ -2,21 +2,17 @@ import Link from "next/link"
 import {
   Box,
   Flex,
-  Text,
   IconButton,
   Heading,
   Stack,
+  Text,
   Collapse,
   Link as ChakraLink,
-  Popover,
-  PopoverTrigger,
   useColorModeValue,
   useBreakpointValue,
   useDisclosure
 } from "@chakra-ui/react"
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons"
-
-import DarkModeButton from "@components/ui/DarkModeButton"
 
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure()
@@ -24,7 +20,7 @@ export default function WithSubnavigation() {
   return (
     <Box>
       <Flex
-        minH={"60px"}
+        minH={"80px"}
         py={{ base: 2 }}
         px={{ base: 4 }}
         borderBottom={1}
@@ -50,6 +46,7 @@ export default function WithSubnavigation() {
           <Link href="/">
             <Heading
               style={{ cursor: "pointer" }}
+              mt={{ base: 0, md: 2 }}
               textAlign={useBreakpointValue({ base: "center", md: "left" })}
               color={"purple.600"}
             >
@@ -66,9 +63,7 @@ export default function WithSubnavigation() {
           justify={"flex-end"}
           direction={"row"}
           spacing={6}
-        >
-          <DarkModeButton />
-        </Stack>
+        ></Stack>
       </Flex>
 
       <Collapse in={isOpen} animateOpacity>
@@ -79,36 +74,44 @@ export default function WithSubnavigation() {
 }
 
 const DesktopNav = () => {
+  const handleScroll = () => {
+    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" })
+  }
   return (
     <Stack direction={"row"} spacing={4}>
       {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.label}>
-          {navItem.label === "Repository" ? (
-            <ChakraLink
-              isExternal
-              p={4}
+          {navItem.label === "Opiniones" ? (
+            <Text
+              py={4}
+              px={8}
+              mb={2}
               fontSize={"sm"}
               fontWeight={500}
               _hover={{
-                textDecoration: "none"
+                cursor: "pointer"
               }}
-              href="https://github.com/damianricobelli/covid-19"
               color={useColorModeValue("gray.600", "gray.200")}
+              onClick={() => handleScroll()}
             >
               {navItem.label}
-            </ChakraLink>
+            </Text>
           ) : (
             <Link href={navItem.href}>
-              <ChakraLink
-                p={4}
-                fontSize={"sm"}
-                fontWeight={500}
-                _hover={{
-                  textDecoration: "none"
-                }}
-                color={useColorModeValue("gray.600", "gray.200")}
-              >
-                {navItem.label}
+              <ChakraLink>
+                <Text
+                  p={4}
+                  px={8}
+                  mb={2}
+                  fontSize={"sm"}
+                  fontWeight={500}
+                  _hover={{
+                    textDecoration: "none"
+                  }}
+                  color={useColorModeValue("gray.600", "gray.200")}
+                >
+                  {navItem.label}
+                </Text>
               </ChakraLink>
             </Link>
           )}

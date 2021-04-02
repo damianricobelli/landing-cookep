@@ -7,8 +7,8 @@ import {
   Stack,
   Container,
   Image,
-  Badge,
-  SimpleGrid,
+  Tag,
+  TagLabel,
   useColorModeValue
 } from "@chakra-ui/react"
 
@@ -33,10 +33,9 @@ const UseAvatar = ({
     <Flex align={"center"} mt={8} direction={"column"}>
       <Image boxSize="168px" src={src} alt={name} mb={2} />
       <Stack spacing={-1} align={"center"}>
-        <Text fontWeight={600}>{name}</Text>
-        <Badge fontSize="1.1em" variant="solid" colorScheme="green">
-          {title}
-        </Badge>
+        <Tag mt={2} size={"lg"} variant="solid" colorScheme="green">
+          <TagLabel>{title}</TagLabel>
+        </Tag>
       </Stack>
     </Flex>
   )
@@ -53,7 +52,7 @@ export default function WithSpeechBubbles() {
             align={"center"}
             fontSize={{ base: "2xl", sm: "3xl", lg: "4xl" }}
           >
-            <Text as={"span"}>Pensado para múltiples sectores</Text>
+            <Text as={"span"}>Pensado para múltiples clientes y servicios</Text>
           </Heading>
         </Stack>
         <Flex wrap={"wrap"} direction={"row"} justify="center" align="center">
