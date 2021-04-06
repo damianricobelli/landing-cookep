@@ -36,7 +36,7 @@ export default function Home() {
     <>
       <Head>
         <title>Cookep</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.svg" />
       </Head>
       <Hero />
       <Use />
