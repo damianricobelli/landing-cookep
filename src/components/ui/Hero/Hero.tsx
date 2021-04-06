@@ -11,7 +11,8 @@ import {
   SimpleGrid,
   HStack,
   VStack,
-  useColorModeValue
+  useColorModeValue,
+  Link
 } from "@chakra-ui/react"
 import { useState } from "react"
 import uuid from "react-uuid"
@@ -70,9 +71,6 @@ export default function CallToActionWithVideo() {
             color={useColorModeValue("gray.500", "gray.300")}
             fontSize={{ base: "lg", lg: "xl" }}
           >
-            {/* Somos la manera más sencilla de administrar empresas de viandas.
-            Centralización de información, control absoluto de los detalles,
-            atención a cada uno de sus clientes y mucho más con Cookep. */}
             La mejor herramienta para centralizar información de sus clientes,
             emitir y recibir órdenes de pedidos, gestionar la producción de la
             cocina y facilitar los procesos logísticos.
@@ -103,18 +101,28 @@ export default function CallToActionWithVideo() {
             py={{ base: 10, md: 0 }}
             direction={{ base: "column", sm: "row" }}
           >
-            <Button
-              rounded={"full"}
-              leftIcon={<FaWhatsapp />}
-              size={"lg"}
-              fontWeight={"normal"}
-              px={6}
-              color={"white"}
-              colorScheme={"whatsapp"}
-              _hover={{ bg: "green.600" }}
+            <Link
+              isExternal
+              href={
+                "https://api.whatsapp.com/send?phone=543413610556&text=%C2%A1Hola!%20Acabo%20de%20revisar%20su%20web%20y%20me%20gustar%C3%ADa%20probar%20Cookep"
+              }
+              _hover={{
+                textDecoration: "none"
+              }}
             >
-              Probar gratis
-            </Button>
+              <Button
+                rounded={"full"}
+                leftIcon={<FaWhatsapp />}
+                size={"lg"}
+                fontWeight={"normal"}
+                px={6}
+                color={"white"}
+                colorScheme={"whatsapp"}
+                _hover={{ bg: "green.600" }}
+              >
+                Probar gratis
+              </Button>
+            </Link>
           </Stack>
         </Stack>
         <Flex
