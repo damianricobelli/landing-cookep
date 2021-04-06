@@ -9,7 +9,7 @@ import { WhatsappButton } from "@components/ui/WhatsappButton"
 import React from "react"
 
 export default function Home() {
-  const [hideOnScroll, setHideOnScroll] = useState(true)
+  const [hideOnScroll, setHideOnScroll] = useState(false)
   useScrollPosition(
     ({ currPos }) => {
       setHideOnScroll(currPos.y < -600)
