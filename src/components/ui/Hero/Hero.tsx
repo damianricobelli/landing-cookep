@@ -54,19 +54,23 @@ export default function CallToActionWithVideo() {
         direction={{ base: "column", lg: "row" }}
       >
         <Stack flex={1} spacing={{ base: 6, md: 12 }}>
-          <Heading
-            lineHeight={1.1}
-            fontWeight={600}
-            fontSize={{ base: "3xl", sm: "4xl", lg: "5xl" }}
-          >
-            <Text as={"span"} position={"relative"}>
-              Gestione su negocio,
-            </Text>
-            <Text as={"span"} color={"purple.400"}>
-              {" "}
-              mejore la atención a sus clientes
-            </Text>
-          </Heading>
+          <Stack direction={"column"}>
+            <Heading
+              lineHeight={1.1}
+              fontWeight={600}
+              fontSize={{ base: "3xl", sm: "4xl", lg: "5xl" }}
+            >
+              Software para catering
+            </Heading>
+            <Heading
+              lineHeight={1.1}
+              fontWeight={600}
+              color={"purple.400"}
+              fontSize={{ base: "2xl", sm: "3xl", lg: "4xl" }}
+            >
+              Atienda a sus clientes corporativos de una manera fácil y cómoda
+            </Heading>
+          </Stack>
           <Text
             color={useColorModeValue("gray.500", "gray.300")}
             fontSize={{ base: "lg", lg: "xl" }}
