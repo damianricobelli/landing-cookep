@@ -29,9 +29,6 @@ const features = [
   },
   {
     text: "Servicios personalizados para tus clientes."
-  },
-  {
-    text: "Desde AR$5.000 al mes."
   }
 ]
 
